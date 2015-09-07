@@ -1,0 +1,63 @@
+<h1>&nbsp;</h1>
+<!-- Wrong answer dialog box -->
+<div class="modal fade" id="wrongModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Whoops!</h4>
+      </div>
+      <div class="modal-body">
+        That wasn't quite right. Have another go.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Try again</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Right answer dialog box -->
+<div class="modal fade" id="rightModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Hurrah!</h4>
+        <img src="https://cosette24601.files.wordpress.com/2014/11/paw-patrol.png">
+      </div>
+      <div class="modal-body">
+        Yes, you got it right! Well done!
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-success" href="/welcome/index" role="button">Do another one</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%
+	words=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty' ]
+	numbers=(1..20).to_a.shuffle.take(3) 
+	answer=numbers.at(rand(0..2))
+ %>
+
+<div class="card card-block text-center">
+  <h3 class="card-title">What is this number?</h3>
+  <h4 class="card-text"><h4><%= answer %></h4>
+  <div class="card-footer">
+		<% numbers.each { |number| 
+			if number == answer then
+			%>
+			<a href="#" class="card-link" data-toggle="modal" data-target="#rightModal"><%= words[number] %></a>
+		<% else %>
+			<a href="#" class="card-link" data-toggle="modal" data-target="#wrongModal"><%= words[number] %></a>
+		<% end 
+		} %>
+	</div>
+</div>

@@ -4,7 +4,7 @@
   pick_a_pup=['Chase','Rocky','Rubble','Skye','Zuma','Marshall']
 	words=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty' ]
 	numbers=(1..20).to_a.shuffle.take(3) 
-	answer=numbers.at(rand(0..2))
+	answer=(numbers.at(rand(0..2)))
  %>
 
 <h1>&nbsp;</h1>
@@ -49,7 +49,7 @@
       	<%= success_message.sample %>
       </div>
       <div class="modal-footer">
-        <a class="btn btn-success" href="/welcome/index" role="button">Do another one</a>
+        <a class="btn btn-success" href="/welcome/oneless" role="button">Do another one</a>
       </div>
     </div>
   </div>
@@ -61,13 +61,12 @@
 	</div>
 	<div class="col-md-8">
 		<div class="card card-block text-center">
-		  <h3 class="card-title">What is this number?</h3>
-		  <h4 class="card-text"><h4><%= answer %></h4>
+		  <h3 class="card-title">What is <i>one less</i> than <%= answer %>?</h3>
 		  <div class="card-footer">
 				<% numbers.each { |number| 
 					if number == answer then
 					%>
-					<a href="#" class="card-link" data-toggle="modal" data-target="#rightModal"><%= words[number] %></a>
+					<a href="#" class="card-link" data-toggle="modal" data-target="#rightModal"><%= words[number-1] %></a>
 				<% else %>
 					<a href="#" class="card-link" data-toggle="modal" data-target="#wrongModal"><%= words[number] %></a>
 				<% end 

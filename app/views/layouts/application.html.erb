@@ -7,9 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<img src="https://upload.wikimedia.org/wikipedia/en/8/8f/PAWPatrolLogo.png" />
-<div class="container">
-	<%= yield %>	
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			<img src="https://upload.wikimedia.org/wikipedia/en/8/8f/PAWPatrolLogo.png" />
+		</div>
+		<div class="col-md-8" style="line-height: 200px">
+			<p style="font-size: 48px; vertical-align: middle;">Urban's Number Mission!</p>
+		</div>
+	</div>
+	<container>
+	<%= yield %>
+	</container>	
 </div>
 
 
